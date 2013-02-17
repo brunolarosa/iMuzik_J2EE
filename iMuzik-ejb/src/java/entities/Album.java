@@ -81,8 +81,7 @@ public class Album implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    @XmlElementWrapper(name = "songs")
-    @XmlElement(name="song")
+    @XmlTransient
     public List<Song> getSongs() {
         return songs;
     }

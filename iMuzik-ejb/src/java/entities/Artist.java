@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -53,8 +54,7 @@ public class Artist implements Serializable {
         this.id = id;
     }
 
-    @XmlElementWrapper(name = "albums")
-    @XmlElement(name="album")
+    @XmlTransient
     public List<Album> getAlbums() {
         return albums;
     }

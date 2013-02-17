@@ -13,6 +13,9 @@ import javax.xml.bind.annotation.*;
  * @author brunolarosa
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Song.findAll", query = "SELECT s FROM Song s ORDER BY s.title"),
+})
 @XmlRootElement(name = "song")
 public class Song implements Serializable {
 
@@ -47,7 +50,6 @@ public class Song implements Serializable {
         this.id = id;
     }
 
-    @XmlTransient
     public Album getAlbum() {
         return album;
     }
@@ -56,7 +58,6 @@ public class Song implements Serializable {
         this.album = album;
     }
     
-    @XmlTransient
     public Artist getArtist() {
         return artist;
     }

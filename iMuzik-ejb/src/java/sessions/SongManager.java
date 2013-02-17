@@ -6,10 +6,12 @@ package sessions;
 
 import entities.Song;
 import java.io.File;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.farng.mp3.MP3File;
 import utils.ID3Util;
@@ -67,6 +69,12 @@ public class SongManager {
         } catch (Exception e) {
              
         }  
+        
+    }
+    
+    public List<Song> getAllSongs() {
+        Query q = em.createNamedQuery("Song.findAll");
+        return q.getResultList();
         
     }
     

@@ -17,7 +17,7 @@ import sessions.ArtistManager;
  *
  * @author brunolarosa
  */
-@Path("artist")
+@Path("artists")
 @Stateless
 public class ArtistService {
     
