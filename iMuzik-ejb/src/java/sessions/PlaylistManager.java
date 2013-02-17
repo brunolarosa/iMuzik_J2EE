@@ -7,10 +7,13 @@ package sessions;
 import entities.Playlist;
 import entities.PlaylistItem;
 import entities.Song;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -18,6 +21,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @LocalBean
+@XmlRootElement(name="playlists")
 public class PlaylistManager {
     
     @PersistenceContext(unitName = "iMuzik-ejbPU")
@@ -38,7 +42,7 @@ public class PlaylistManager {
     
    
     public void addSongPlaylist(int playlistID, Song song) {
-        Playlist playlist = getPlaylist(playlistID);
+          Playlist playlist = getPlaylist(playlistID);
           playlist.getPlaylistItems().add(new PlaylistItem(song, playlist.getPlaylistItems().size()));
           em.merge(playlist);
     }
@@ -47,6 +51,11 @@ public class PlaylistManager {
         Playlist playlist = getPlaylist(playlistID);
           playlist.getPlaylistItems().remove(playlistItem);
           em.merge(playlist);
+    }
+    
+    public List<Playlist> getAllPlaylists() {
+        Query q = em.createNamedQuery("Playlist.findAll");
+        return q.getResultList();
     }
     
 }

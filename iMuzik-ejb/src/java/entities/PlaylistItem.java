@@ -6,12 +6,14 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author dominiquec
  */
 @Entity
+@XmlRootElement(name="item")
 public class PlaylistItem implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

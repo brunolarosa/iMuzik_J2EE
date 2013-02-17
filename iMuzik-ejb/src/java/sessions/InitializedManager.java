@@ -38,6 +38,7 @@ public class InitializedManager {
         UserEntity user = new UserEntity("admin", "123456");
         em.persist(user);
         
+        
         File root = new File("/Users/brunolarosa/Desktop/MusicTest");
         String[] extensions = {"mp3"};
         
