@@ -1,0 +1,127 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./templates/main_template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:define name="sidebar_header">
+        <div>
+            <div class="mediaSquare">
+                <img src="#{artistMBean.currentArtist.imageURL}" />
+            </div>
+
+        </div>
+        <h1><span>#{artistMBean.currentArtist.name}</span></h1>
+    </ui:define>
+
+    <ui:define name="content">
+        <div id="artistAlbums">
+            <div id="artistalbums">
+
+
+
+                <ul class="slats infinite large lazyLoad">
+                    <c:forEach var="album" items="#{artistMBean.currentArtist.albums}">
+                        <li>
+                            <div class="albumContainer">
+
+                                <div class="album mediaSquare large" >
+                                    <a href="#" >
+                                        <img src="#{album.imageURL}" />
+
+                                    </a>
+
+                                    <!-- Album Meta Info - Regular -->
+
+
+                                </div>
+
+                            </div>
+         
+                            <div>
+                                <h3 class="albumTitle">#{album.title}</h3>
+
+                                <h:form>
+                                    <ul class="table mediaItems">
+
+                                        <c:forEach var="song" items="#{album.songs}">
+                                            <li draggable="true" class="">
+                                                <div class="left">
+
+                                                    <a href="#" onclick="javascript:parent.addMusic(#{song.id})" >#{song.number}</a>
+                                                    <button class="playBtn play_25 song">lol</button>
+                                                    <c:if test="#{(userMBean.userLogged != null)}">
+                                                    <a href="#" onclick="#{userMBean.addSongPlaylist(song)}" >A</a>
+                                                    <button class="playBtn play_25 song">lol</button>
+                                                    </c:if>
+
+                                                </div>
+
+
+                                                <div class="flex">
+                                                    <div class="title"> <!-- MANDATORY COLUMN -->
+                                                        <span>#{song.title}</span>
+
+
+                                                    </div>
+
+
+                                                    <div class="video">
+
+                                                    </div>
+
+
+
+                                                    <div class="artist">
+                                                        <h:commandLink value="#{song.artist.name}" action="#{artistMBean.showArtistDetails(song.artist)}"/>
+                                                    </div>
+
+
+
+                                                    <div class="album">
+
+                                                    </div>
+
+
+
+                                                    <div class="duration">Durée</div>
+
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+                                            </li>
+                                        </c:forEach>
+
+
+                                    </ul>
+                                </h:form>
+
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+
+
+        <aside>
+            <section>
+                <p>
+                    #{artistMBean.currentArtist.bio}
+                </p>
+            </section>
+        </aside>
+
+    </ui:define>
+
+</ui:composition>

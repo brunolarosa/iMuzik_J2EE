@@ -33,4 +33,6 @@ public class ArtistService {
         return this.artistManager.getAllArtists();
     }
     
+    
+    
 }

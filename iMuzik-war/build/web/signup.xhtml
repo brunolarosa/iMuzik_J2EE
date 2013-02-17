@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./templates/template_default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">>
+
+
+    <ui:define name="content">
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Email:" for="email" />
+                    <h:inputText id="email" value="#{userMBean.email}" title="Email" />
+                    <h:outputLabel value="FirstName:" for="firstName" />
+                    <h:inputText id="firstName" value="#{userMBean.firstName}" title="FirstName" />
+                    <h:outputLabel value="LastName:" for="lastName" />
+                    <h:inputText id="lastName" value="#{userMBean.lastName}" title="LastName" />
+                    <h:outputLabel value="Password:" for="password" />
+                    <h:inputText id="password" value="#{userMBean.password}" title="Password" />
+                </h:panelGrid>
+                <h:commandLink value="Enregistrer" action="#{userMBean.createUser()}"/>
+            </h:form>
+            
+        </f:view>
+    </ui:define>
+
+</ui:composition>

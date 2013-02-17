@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+        <title>iMuzik - Your music everywhere</title>
+    </h:head>
+
+    <h:body>
+
+
+        <div id="top" class="top">
+            <a id="logo"></a>
+            <div id="top_right">
+
+
+                <h:form rendered="#{!loginMBean.connected}">
+                    <h:commandLink value="Connexion" action="#{loginMBean.connexion}" />
+                </h:form>
+                <h:form rendered="#{loginMBean.connected}">
+                    <h:commandLink value="Déconnexion" action="#{loginMBean.deconnexion}" /> 
+                </h:form>
+            </div>
+
+        </div>
+
+        <div id="middle">
+            <div id="left">
+                <h:form>
+                    <ul id="">
+                        
+                        <li><h:commandLink value="Catégories" action="categoriesList?faces-redirect=true"/></li>
+                    </ul>
+                </h:form>
+                 
+                <ui:insert name="left">
+                   
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+    </h:body>
+
+</html>

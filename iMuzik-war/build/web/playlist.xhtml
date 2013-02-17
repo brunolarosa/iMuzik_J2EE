@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./templates/main_template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+
+    <ui:define name="content">
+        <div id="artistAlbums">
+            <div id="artistalbums">
+
+
+
+                <ul class="slats infinite large lazyLoad">
+                    <c:forEach var="playlist" items="#{userMBean.userLogged.myPlaylists}">
+                        <li>
+
+                            <div>
+                                <h3 class="albumTitle">#{playlist.name}</h3>
+
+                                <h:form>
+                                    <ul class="table mediaItems">
+
+                                        <c:forEach var="playlistItem" items="#{playlist.playlistItems}">
+                                            <li draggable="true" class="">
+                                                <div class="left">
+
+                                                    <a href="#" onclick="javascript:parent.addMusic(#{song.id})" >#{playlistItem.song.number}</a>
+                                                    <button class="playBtn play_25 song">lol</button>
+                                                    <a href="#" onclick="#{userMBean.delSongPlaylist(playlistItem)}" >D</a>
+                                                    <button class="playBtn play_25 song">lol</button>
+
+                                                </div>
+
+
+                                                <div class="flex">
+                                                    <div class="title"> <!-- MANDATORY COLUMN -->
+                                                        <span>#{playlistItem.song.title}</span>
+
+
+                                                    </div>
+
+
+                                                    <div class="video">
+
+                                                    </div>
+
+
+
+                                                    <div class="artist">
+                                                        <h:commandLink value="#{playlistItem.song.artist.name}" action="#{artistMBean.showArtistDetails(playlistItem.song.artist)}"/>
+                                                    </div>
+
+
+
+                                                    <div class="album">
+
+                                                    </div>
+
+
+
+                                                    <div class="duration">Durée</div>
+
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+                                            </li>
+                                        </c:forEach>
+
+
+                                    </ul>
+                                </h:form>
+
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </ui:define>
+
+</ui:composition>

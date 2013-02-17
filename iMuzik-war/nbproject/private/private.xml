@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/src/java/services/ArtistService.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/src/java/services/PlaylistService.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/web/test.xhtml</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/web/index.xhtml</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/web/templates/template_default.xhtml</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/web/templates/main_template.xhtml</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/src/java/managedbeans/PlaylistMBean.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-war/src/java/managedbeans/UserMBean.java</file>
+    </open-files>
 </project-private>

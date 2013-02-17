@@ -6,6 +6,7 @@ package sessions;
 
 import entities.Artist;
 import entities.Song;
+import entities.UserEntity;
 import java.io.File;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
@@ -34,8 +35,12 @@ public class InitializedManager {
     
     @PostConstruct
     public void init() {
+        UserEntity user = new UserEntity("admin", "123456");
+        em.persist(user);
+        
         File root = new File("/Users/brunolarosa/Desktop/MusicTest");
         String[] extensions = {"mp3"};
+        
         Collection<File> files = FileUtils.listFiles(root, extensions, true);
 
 

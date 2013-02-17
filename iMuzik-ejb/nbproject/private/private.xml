@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-ejb/src/java/sessions/ArtistManager.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-ejb/src/java/entities/Artist.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-ejb/src/java/entities/Album.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-ejb/src/java/entities/Song.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-ejb/src/java/entities/UserEntity.java</file>
+        <file>file:/Users/brunolarosa/Developer/Java/iMuzik/iMuzik-ejb/src/java/sessions/InitializedManager.java</file>
+    </open-files>
 </project-private>
