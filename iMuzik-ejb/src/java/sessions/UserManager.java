@@ -4,16 +4,11 @@
  */
 package sessions;
 
-import entities.Artist;
-import entities.Playlist;
-import entities.Song;
-import entities.UserEntity;
+import entities.*;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 /**
  *
@@ -26,8 +21,8 @@ public class UserManager {
     @PersistenceContext(unitName = "iMuzik-ejbPU")
     private EntityManager em;
 
-    public void createUser(String email, String password) {
-        UserEntity user = new UserEntity(email, password);
+    public void createUser(String email, String firstName, String lastName, String password) {
+        UserEntity user = new UserEntity(email, firstName, lastName, password);
         persist(user);
     }
 
@@ -37,6 +32,11 @@ public class UserManager {
 
     public UserEntity getUserByID(int id) {
         return em.find(UserEntity.class, id);
+    }
+    
+    public List<UserEntity> getAllUserEntities() {
+        Query query = em.createNamedQuery("UserEntity.findAll");
+        return query.getResultList();
     }
 
     public UserEntity getUserByEmail(String email) {
@@ -57,11 +57,19 @@ public class UserManager {
         return null;
     }
 
-
-
     public void addPlaylist(UserEntity user, Playlist playlist) {
           user.getMyPlaylists().add(playlist);
           em.merge(user);
+    }
+    
+    public void addSongPlaylist(UserEntity user, int playlistID, Song song) {
+        for (Playlist playlist : user.getMyPlaylists()) {
+            if (playlist.getId() == playlistID) {
+                PlaylistItem playlistItem = new PlaylistItem(song, playlist.getPlaylistItems().size());
+                playlist.getPlaylistItems().add(playlistItem);
+                em.merge(user);
+            }
+        }
     }
     
      

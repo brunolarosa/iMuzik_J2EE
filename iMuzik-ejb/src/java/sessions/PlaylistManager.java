@@ -39,7 +39,6 @@ public class PlaylistManager {
     public Playlist getPlaylist(int id) {
         return em.find(Playlist.class, id);
     }
-    
    
     public void addSongPlaylist(int playlistID, Song song) {
           Playlist playlist = getPlaylist(playlistID);
@@ -51,6 +50,10 @@ public class PlaylistManager {
         Playlist playlist = getPlaylist(playlistID);
           playlist.getPlaylistItems().remove(playlistItem);
           em.merge(playlist);
+    }
+    
+    public void deletePlaylist(int playlistSelectedID) {
+        em.remove(getPlaylist(playlistSelectedID)); 
     }
     
     public List<Playlist> getAllPlaylists() {

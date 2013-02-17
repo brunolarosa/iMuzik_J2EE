@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.email = :email"),
+        @NamedQuery(name = "UserEntity.findAll", query = "SELECT u FROM UserEntity u ORDER BY u.lastName"),
 })
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -31,18 +32,29 @@ public class UserEntity implements Serializable {
     
     private String password;
     
+    private boolean admin;
+    
     @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.LAZY, mappedBy="User")
     private List<Playlist> myPlaylists; 
 
     public UserEntity() {
     }
 
-    public UserEntity(String email, String password) {
+    public UserEntity(String email, String firstName, String lastName, String password) {
         this.email = email;
         this.password = password;
-        this.firstName = "nc";
-        this.lastName = "nc";
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.admin = false;
         this.myPlaylists = new ArrayList<Playlist>();
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
     
     public int getId() {
@@ -85,6 +97,14 @@ public class UserEntity implements Serializable {
         this.password = password;
     }
     
+    public List<Playlist> getMyPlaylists() {
+        return myPlaylists;
+    }
+
+    public void setMyPlaylists(List<Playlist> myPlaylists) {
+        this.myPlaylists = myPlaylists;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -108,14 +128,6 @@ public class UserEntity implements Serializable {
     @Override
     public String toString() {
         return "entities.User[ id=" + id + " ]";
-    }
-
-    public List<Playlist> getMyPlaylists() {
-        return myPlaylists;
-    }
-
-    public void setMyPlaylists(List<Playlist> myPlaylists) {
-        this.myPlaylists = myPlaylists;
     }
     
 }

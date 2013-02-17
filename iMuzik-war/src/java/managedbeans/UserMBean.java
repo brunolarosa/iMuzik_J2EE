@@ -4,7 +4,6 @@
  */
 package managedbeans;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import entities.Playlist;
 import entities.PlaylistItem;
 import entities.Song;
@@ -65,7 +64,7 @@ public class UserMBean implements Serializable {
     }
 
     public void createUser() {
-        userManager.createUser(email, password);
+        userManager.createUser(email, firstName, lastName, password);
     }
 
     public String getEmail() {

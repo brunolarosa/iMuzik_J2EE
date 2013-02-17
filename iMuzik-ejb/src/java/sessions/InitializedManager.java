@@ -35,7 +35,9 @@ public class InitializedManager {
     
     @PostConstruct
     public void init() {
-        UserEntity user = new UserEntity("admin", "123456");
+        
+        UserEntity user = new UserEntity("admin","admin","admin", "123456");
+        user.setAdmin(true);
         em.persist(user);
         
         

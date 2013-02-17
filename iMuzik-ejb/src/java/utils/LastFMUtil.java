@@ -18,7 +18,14 @@ public class LastFMUtil {
 
     public static void readArtist(entities.Artist artist) {
         Artist artistFM = Artist.getInfo(artist.getName(), lastFMKey);
-        artist.setBio(artistFM.getWikiSummary().replace("\"", "\\\""));
+        
+        //Suppression des tags HTML dans la bio
+        String bio = artistFM.getWikiSummary().replaceAll("\\<.*?\\>", "");
+        
+        //Suppression de la derniere ligne Last.fm de la bio
+        bio = bio.split("Read more about .*? on Last.fm.")[0];
+        artist.setBio(bio);
+        
         artist.setImageURL(artistFM.getImageURL(ImageSize.LARGE));
     }
 
