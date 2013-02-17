@@ -19,7 +19,9 @@
     src: url("../fonts/Cantarell-Bold.ttf");
 }
 
-
+cover{
+    display: inline-block;
+}
 
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
@@ -53,17 +55,19 @@ table {
     border-spacing: 0;
 }
 
+/*
 button,input,select,textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
-}
+}*/
 
-input,textarea,select {
+
+/*input,textarea,select {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-}
+}*/
 
 button::-moz-focus-inner {
     border: 0;
@@ -101,10 +105,11 @@ p {
     line-height: 18px;
 }
 
+/*
 button,input,textarea {
     font-family: inherit;
     font-size: inherit;
-}
+}*/
 
 label,strong {
     font-weight: 700;
@@ -1897,10 +1902,11 @@ ol.table>li.selected {
     font-size: 14px;
 }
 
+/*
 #radioDialog .search input {
     background-color: rgba(219,114,27,.1);
     margin-bottom: 20px;
-}
+}*/
 
 #radioDialog .search ul {
     max-height: 350px;
@@ -2420,6 +2426,7 @@ html,body {
 
 #container {
     padding-bottom: 78px;
+    padding: 30px 0 15px;
 }
 
 #wrap {
@@ -2463,6 +2470,7 @@ html,body {
     top: inherit;
     bottom: 70px;
     color: #EEE;
+    padding: 30px 0 15px;
 }
 
 .verticalContent {
@@ -2806,6 +2814,7 @@ html,body {
     position: fixed;
     left: 15px;
     top: 15px;
+    padding: 30px 15px;
 }
 
 #sidebar a {
@@ -2902,12 +2911,13 @@ html,body {
     margin-top: 5px;
 }
 
+/*
 #sidebar>footer input[type="text"] {
     padding: 5px;
     font-size: 10px;
     background: #FFF;
     margin-top: 6px;
-}
+}*/
 
 #sidebar>footer>div>h5 {
     padding: 4px 0;
@@ -3019,14 +3029,14 @@ html,body {
     -moz-transition: none;
     -webkit-transition: none;
 }
-
+/*
 input[type=text],input[type=password],input[type=email],input[type="url"],input[type=number] {
     width: 100%;
     height: auto;
     border-radius: 2px;
     -webkit-appearance: none;
-}
-
+}*/
+/*
 input[type=text],input[type=password],input[type=email],input[type="url"],input[type=number],textarea {
     width: 100%;
     padding: 10px;
@@ -3034,7 +3044,7 @@ input[type=text],input[type=password],input[type=email],input[type="url"],input[
     border: 0;
     color: #7f7f7f;
     font-size: 14px;
-}
+}*/
 
 input:focus {
     color: #313131;
@@ -9158,6 +9168,7 @@ to {
     border-top: 1px solid #D6D6D6;
     border-bottom: 1px solid #BCBCBC;
     min-height: 200px;
+    padding: 30px 0 15px;
     overflow: auto;
     -moz-transition: background-color 1s;
     -webkit-transition: background-color 1s;
@@ -9181,7 +9192,7 @@ color: #444;
 }
 
 #wrap > aside > section {
-padding: 30px 40px 0 30px;
+padding: 45px 40px 0 30px;
 }
 
 #wrap > aside > section > p {

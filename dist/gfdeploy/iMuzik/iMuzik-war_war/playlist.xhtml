@@ -32,7 +32,7 @@
 
                                                     <a href="#" onclick="javascript:parent.addMusic(#{song.id})" >#{playlistItem.song.number}</a>
                                                     <button class="playBtn play_25 song">lol</button>
-                                                    <a href="#" onclick="#{userMBean.delSongPlaylist(playlistItem)}" >D</a>
+                                                    <h:commandLink value="D" action="#{userMBean.delSongPlaylist(playlist.id , playlistItem)}"/>
                                                     <button class="playBtn play_25 song">lol</button>
 
                                                 </div>
@@ -66,16 +66,6 @@
 
                                                     <div class="duration">Durée</div>
 
-
-
-
-
-
-
-
-
-
-
                                                 </div>
                                             </li>
                                         </c:forEach>
@@ -90,9 +80,38 @@
                 </ul>
             </div>
         </div>
+ 
+ <aside> 
+    
+            <section id="section">
+                <p>
+                 Ici, vous avez la possibilité de gérer vos playlists
+                   <br/>
+                   <br/>
+                   Créer de nouvelles playlists :
+                   <br/>
+                <h:form>
+                <h:inputText id="namePlaylist" value="#{userMBean.namePlaylist}" title="namePlaylist" />
+               <button class="btn btn-inverse" type="button"><h:commandLink value="Créer" action="#{userMBean.createPlaylist()}" /></button>
+                
+                </h:form>
+      <br/>
+                   <br/>
+                   Organiser vos playlists :
+                   <br/>
+                <h:form>
+                            <c:forEach var="playlist" items="#{userMBean.userLogged.myPlaylists}">
+                        #{playlist.name}
+               <button class="btn btn-inverse" type="button"><h:commandLink value="Supprimer" action="#{userMBean.deletePlaylist(playlist.id)}" /></button>
+                            </c:forEach>
+                </h:form>
 
-
+                </p>     
+            </section>
+         
+        </aside>
 
     </ui:define>
 
 </ui:composition>
+ 

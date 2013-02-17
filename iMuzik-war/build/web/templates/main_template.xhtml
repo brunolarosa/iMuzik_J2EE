@@ -2,11 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="../assets/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="./../assets/css/main.css" rel="stylesheet" type="text/css" />
 
 
         <title>iMuzik</title>
@@ -21,7 +22,7 @@
 
                 <header>
                     <ui:insert name="sidebar_header">
-                        <h1><span>Home</span></h1>
+                        <h1><span><a href="artistsList.xhtml">Home</a></span></h1>
                     </ui:insert>
 
                 </header>
@@ -30,18 +31,24 @@
                 <nav id="sidebar_nav">
                     <h:form>
                         <ul>
-                            <li><h:commandLink value="Accueil" action="artistsList.xhtml"/></li>
+                            <li><h:commandLink value="Enregistrement" action="#{userMBean.signup()}"/></li>
                             <li><h:commandLink value="Playlist" action="playlist.xhtml"/></li>
                             <li><h:commandLink value="Mes infos" action="myInfos.xhtml"/></li>
-                            <li><h:commandLink value="Song" action="#{artistMBean.showArtistDetails(artist)}"/></li>
-                            <li><h:commandLink value="Add" action="javascript:parent.addMusic('1')"/></li>
+                            <c:if test="#{userMBean.userIsLogged()}">
+                                <c:if test="#{(userMBean.userIsAdmin())}">
+                                    <li><h:commandLink value="Admin" action="admin.xhtml"/></li>
+                                </c:if>
+                            </c:if>
+                            <li><h:commandLink value="Artistes" action="artistsList.xhtml"/></li>
                         </ul>
                     </h:form>
 
+                    
                 </nav> 
 
 
             </section>
+            
             <!-- END Siderbar -->
 
             <div id="wrap" class="container">
