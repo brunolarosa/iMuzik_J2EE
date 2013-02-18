@@ -6,12 +6,10 @@ package entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -19,17 +17,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author dominiquec
  */
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Playlist.findAll", query = "SELECT p FROM Playlist p ORDER BY p.name"),
-})
-@XmlRootElement(name="playlist")
 public class Playlist implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    public int getId() {
+     public int getId() {
         return id;
     }
 

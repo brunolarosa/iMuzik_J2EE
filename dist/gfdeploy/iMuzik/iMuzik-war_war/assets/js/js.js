@@ -8,31 +8,36 @@ jQuery(document).ready(function() {
         mutestate = false;
 	muted = $('#muted');
 	close = $('#close');
+//        sources = new Array();
+//        $('source').each(function(){
+//             sources.push($(this).attr("src"));
+//        });
 	currentSongId = 1;
 	song = new Audio();
-    song.type= 'audio/mpeg';
-    song.src= '../musicServlet?m=2';
-    song.load();
-    duration = song.duration;
-    next = $('#next');
-    prev = $('#prev');
+        song.type= 'audio/mpeg';
+        currentNode = document.getElementById('sourcelist').firstElementChild;
+        song.src =  currentNode.src;
+        console.log(song.src);
+        song.preload = "metadata";
+        song.addEventListener("loadedmetadata", function(_event) {
+            //alert(song.duration);
+            duration = song.duration;
+        });
+        next = $('#next');
+        prev = $('#prev');
+        
+        
+    
 
 	play.click(function(e) {
 		e.preventDefault();
 		song.play();
-
-		//$(this).replaceWith('<a class="button gradient" id="pause" href="" title=""></a>');
-		//container.addClass('containerLarge');
-		//cover.addClass('coverLarge');
-		//$('#close').fadeIn(300);
 		$('#seek').attr('max',song.duration);
 	});
 
 	pause.click(function(e) {
 		e.preventDefault();
 		song.pause();
-		//$(this).replaceWith('<a class="button gradient" id="play" href="" title=""></a>');
-
 	});
 
 	togglemute.click(function(e) {
@@ -50,12 +55,7 @@ jQuery(document).ready(function() {
 
 	});
 
-	muted.click(function(e) {
-		e.preventDefault();
-		song.volume+=1;
-		$(this).replaceWith('<a class="button gradient" id="mute" href="" title=""></a>');
-	});
-
+	
 	next.click(function (e){
 		suivante(e);
 	});
@@ -63,10 +63,16 @@ jQuery(document).ready(function() {
 	prev.click(function(e){
 		prevsongId= currentSongId-1;
 		e.preventDefault();
-           
-		song.src='./../assets/music/track'+prevsongId+".mp3";		
-		currentSongId = prevsongId;	
+//		song.src='./../resources/music/track'+prevsongId+".mp3";		
+//		currentSongId = prevsongId;
+                if(currentNode.previousElementSibling){
+                currentNode = currentNode.previousElementSibling;
+                song.src=currentNode.src;
 		song.play();
+                }else{
+                    $("#seek").val(0);
+                    song.currentTime = 0
+                }
 	});
 
 	$('#close').click(function(e) {
@@ -88,6 +94,7 @@ jQuery(document).ready(function() {
 	});
 
 	song.addEventListener('timeupdate',function (e){
+            e.preventDefault();
 		curtime = parseInt(song.currentTime, 10);
 		$("#seek").val(curtime);
 		if (song.ended){
@@ -99,11 +106,31 @@ jQuery(document).ready(function() {
 });
 function suivante(e) {
 		e.preventDefault();
-		nextsongId= currentSongId+1;
-		song.src='./../assets/music/track'+nextsongId+".mp3";
-		currentSongId = nextsongId;		
+		//nextsongId= currentSongId+1;
+//		song.src='./../resources/music/track'+nextsongId+".mp3";
+//		currentSongId = nextsongId;
+                if(currentNode.nextElementSibling){
+                currentNode = currentNode.nextElementSibling;
+                song.src= currentNode.src;
 		song.play();
 		$("#seek").val(0);
-
+                }else{
+                    $("#seek").val(0);
+                    alert('Fin de la Playlist');
+                    
+                }
+console.log(song.src);
 
 	}
+        
+        
+            function changeMusic(id)
+            { 
+                var source=document.createElement("source");
+                source.setAttribute('src','../musicServlet?m='+id);
+                document.getElementById("sourcelist").appendChild(source);
+                currentNode = document.getElementById("sourcelist").lastChild;
+                song.src = currentNode.src;
+                song.play();
+              
+            }

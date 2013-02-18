@@ -41,7 +41,7 @@ public class InitializedManager {
         em.persist(user);
         
         
-        File root = new File("/Users/brunolarosa/Desktop/MusicTest");
+        File root = new File("/Users/MusicTest");
         String[] extensions = {"mp3"};
         
         Collection<File> files = FileUtils.listFiles(root, extensions, true);

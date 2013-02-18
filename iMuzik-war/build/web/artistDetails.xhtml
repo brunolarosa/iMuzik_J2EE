@@ -17,10 +17,31 @@
     </ui:define>
 
     <ui:define name="content">
+       <c:forEach var="playlist" items="#{userMBean.userLogged.myPlaylists}">
+                    <h:form>
+
+
+                        <h:outputText value= "#{playlist.name}" title="id"/>
+                        <h:commandLink value="Selectionner" action="#{userMBean.setPlaylist(playlist.id)}"/>
+                    </h:form>
+                </c:forEach> 
+   <c:forEach var="album" items="#{artistMBean.currentArtist.albums}">
+                        
+                                <h:form>
+                
+                                        <c:forEach var="song" items="#{album.songs}">
+                                           
+                                                        <h:commandLink value="A" action="#{userMBean.addSongPlaylist(song)}"/>
+                                                        
+                                        </c:forEach>
+
+
+                                </h:form>
+
+                    </c:forEach>
+        
         <div id="artistAlbums">
             <div id="artistalbums">
-
-
 
                 <ul class="slats infinite large lazyLoad">
                     <c:forEach var="album" items="#{artistMBean.currentArtist.albums}">
@@ -45,59 +66,28 @@
 
                                 <h:form>
                                     <ul class="table mediaItems">
-
                                         <c:forEach var="song" items="#{album.songs}">
                                             <li draggable="true" class="">
                                                 <div class="left">
-
                                                     <a href="#" onclick="javascript:parent.changeMusic(#{song.id})" >#{song.number}<i class="icon-play"></i></a>
                                                     <button class="playBtn play_25 song"><i class="icon-play"></i></button>
                                                     <c:if test="#{(userMBean.userLogged != null)}">
-                                                            <h:commandLink value="A" action="#{userMBean.addSongPlaylist(song)}"/>
-                                                            <button class="playBtn play_25 song">lol</button>
+                                                        <h:commandLink value="A" action="#{userMBean.addSongPlaylist(song)}"/>
+                                                        <button class="playBtn play_25 song">lol</button>
                                                     </c:if>
                                                 </div>
-
-
                                                 <div class="flex">
                                                     <div class="title"> <!-- MANDATORY COLUMN -->
-
                                                         <span>#{song.title}</span>
-
-
                                                     </div>
-
-
                                                     <div class="video">
-
                                                     </div>
-
-
-
                                                     <div class="artist">
                                                         <h:commandLink value="#{song.artist.name}" action="#{artistMBean.showArtistDetails(song.artist)}"/>
                                                     </div>
-
-
-
                                                     <div class="album">
-
                                                     </div>
-
-
-
                                                     <div class="duration">Durée</div>
-
-
-
-
-
-
-
-
-
-
-
                                                 </div>
                                             </li>
                                         </c:forEach>
