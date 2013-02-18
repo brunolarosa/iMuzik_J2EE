@@ -19,9 +19,16 @@
                 <ul class="slats infinite large lazyLoad">
                     <c:forEach var="playlist" items="#{userMBean.userLogged.myPlaylists}">
                         <li>
+                             <c:set var="myVar" value="list"/>
+
+                             <c:forEach var="playlistItem" items="#{playlist.playlistItems}">
+                                      <c:set var="myVar" value="${myVar};${playlistItem.song.id}" />
+                             </c:forEach>
+                                            
+
 
                             <div>
-                                <h3 class="albumTitle">#{playlist.name}</h3>
+                                <h3 class="albumTitle"><a href="#" onclick="javascript:parent.loadPlayList('#{myVar}')">#{playlist.name}</a></h3>
 
                                 <h:form>
                                     <ul class="table mediaItems">
@@ -73,6 +80,7 @@
 
                                     </ul>
                                 </h:form>
+                                    
 
                             </div>
                         </li>
