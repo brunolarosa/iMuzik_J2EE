@@ -66,10 +66,12 @@
 
 
             <footer id="global">
-                <!--                <source id="playlist" preload="false" controls="true">
-                                    <source id="sourceplayer" src="../musicServlet?m=1" />
-                                    <source id="sourceplayer" src="../musicServlet?m=1" />
-                                </source>-->
+                       <div id='sourcelist'>
+                                    <source src="../musicServlet?m=1" />
+                                    <source  src="../musicServlet?m=2" />
+                                    <source  src="../musicServlet?m=3" />
+                                    <source  src="../musicServlet?m=4" />
+                                </div>
                 <div class="containerplayer">
                     <div class="player">
                         <div class="wrapperbtn">
@@ -89,26 +91,6 @@
 
         </div><!--/.fluid-container-->
 
-      
-        <script>
-        
-            function changeMusic(id)
-            { 
-                document.getElementById('sourceplayer').setAttribute('src','../musicServlet?m='+id);
-                document.getElementById('player').load();
-                document.getElementById('player').play();
-            }
-        
-            function addMusic(id)
-            {
-                var source=document.createElement("source");
-                source.setAttribute('id', 'sourceplayer'+id);
-                source.setAttribute('src','../musicServlet?m='+id);
-                document.getElementById("player").appendChild(source);
-            }
-
-
-        </script>
 
     </body>
 

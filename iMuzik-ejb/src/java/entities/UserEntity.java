@@ -47,6 +47,7 @@ public class UserEntity implements Serializable {
         this.lastName = lastName;
         this.admin = false;
         this.myPlaylists = new ArrayList<Playlist>();
+        this.myPlaylists.add(new Playlist(this, "Favoris"));
     }
 
     public boolean isAdmin() {

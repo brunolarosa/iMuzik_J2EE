@@ -36,6 +36,17 @@ public class UserMBean implements Serializable {
     private UserEntity userLogged;
     private int playlistSelectedID = -1;
     private String namePlaylist;
+    
+     private Playlist playlistSelected;
+
+    public Playlist getPlaylistSelected() {
+        return playlistSelected;
+    }
+
+    public void setPlaylistSelected(Playlist playlistSelected) {
+        this.playlistSelected = playlistSelected;
+        System.out.println(playlistSelected.getName());
+    }
 
     public int getPlaylistSelectedID() {
         return playlistSelectedID;
