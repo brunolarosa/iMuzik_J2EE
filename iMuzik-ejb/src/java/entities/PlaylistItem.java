@@ -25,6 +25,14 @@ public class PlaylistItem implements Serializable {
     
     private int pos;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public PlaylistItem() {
     }
 
