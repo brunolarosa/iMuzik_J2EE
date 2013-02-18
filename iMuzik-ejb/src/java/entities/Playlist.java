@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -17,6 +18,10 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author dominiquec
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Playlist.findAll", query = "SELECT p FROM Playlist p ORDER BY p.name"),
+})
+@XmlRootElement(name="playlist")
 public class Playlist implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
