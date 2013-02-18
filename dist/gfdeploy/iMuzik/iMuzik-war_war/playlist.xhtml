@@ -30,7 +30,7 @@
                                             <li draggable="true" class="">
                                                 <div class="left">
 
-                                                    <a href="#" onclick="javascript:parent.addMusic(#{song.id})" >#{playlistItem.song.number}</a>
+                                                    <a href="#" onclick="javascript:parent.changeMusic(#{playlistItem.song.id})" >O<i class="icon-play"></i></a>
                                                     <button class="playBtn play_25 song">lol</button>
                                                     <h:commandLink value="D" action="#{userMBean.delSongPlaylist(playlist.id , playlistItem)}"/>
                                                     <button class="playBtn play_25 song">lol</button>

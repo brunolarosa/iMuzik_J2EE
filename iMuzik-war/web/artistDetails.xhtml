@@ -17,29 +17,26 @@
     </ui:define>
 
     <ui:define name="content">
-       <c:forEach var="playlist" items="#{userMBean.userLogged.myPlaylists}">
-                    <h:form>
+        <c:forEach var="playlist" items="#{userMBean.userLogged.myPlaylists}">
+            <h:form>
 
 
-                        <h:outputText value= "#{playlist.name}" title="id"/>
-                        <h:commandLink value="Selectionner" action="#{userMBean.setPlaylist(playlist.id)}"/>
-                    </h:form>
-                </c:forEach> 
-   <c:forEach var="album" items="#{artistMBean.currentArtist.albums}">
-                        
-                                <h:form>
-                
-                                        <c:forEach var="song" items="#{album.songs}">
-                                           
-                                                        <h:commandLink value="A" action="#{userMBean.addSongPlaylist(song)}"/>
-                                                        
-                                        </c:forEach>
+                <h:outputText value= "#{playlist.name}" title="id"/>
+                <h:commandLink value="Selectionner" action="#{userMBean.setPlaylist(playlist.id)}"/>
+            </h:form>
+        </c:forEach> 
+        <c:forEach var="album" items="#{artistMBean.currentArtist.albums}">
 
+            <h:form>
 
-                                </h:form>
+                <c:forEach items="${album.songs}" var="song" >
+                    <c:set var="myVar" value="${myVar};${song.id}" />
+                </c:forEach>
 
-                    </c:forEach>
-        
+            </h:form>
+
+        </c:forEach>
+
         <div id="artistAlbums">
             <div id="artistalbums">
 
@@ -53,6 +50,7 @@
                                         <img src="#{album.imageURL}" />
 
                                     </a>
+                                    <a href="#" onclick="javascript:parent.loadPlayList('#{myVar}')"><img src="./../assets/img/button-play.png"/>Load Playlist</a>
 
                                     <!-- Album Meta Info - Regular -->
 
