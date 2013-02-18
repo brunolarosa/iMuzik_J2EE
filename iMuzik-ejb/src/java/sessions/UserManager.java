@@ -33,7 +33,7 @@ public class UserManager {
     public UserEntity getUserByID(int id) {
         return em.find(UserEntity.class, id);
     }
-    
+
     public List<UserEntity> getAllUserEntities() {
         Query query = em.createNamedQuery("UserEntity.findAll");
         return query.getResultList();
@@ -51,17 +51,17 @@ public class UserManager {
 
     public UserEntity getUser(String email, String password) {
         UserEntity user = getUserByEmail(email);
-        if ((user != null)&&(user.getPassword().contentEquals(password))) {
+        if ((user != null) && (user.getPassword().contentEquals(password))) {
             return user;
         }
         return null;
     }
 
     public void addPlaylist(UserEntity user, Playlist playlist) {
-          user.getMyPlaylists().add(playlist);
-          em.merge(user);
+        user.getMyPlaylists().add(playlist);
+        em.merge(user);
     }
-    
+
     public void addSongPlaylist(UserEntity user, int playlistID, Song song) {
         for (Playlist playlist : user.getMyPlaylists()) {
             if (playlist.getId() == playlistID) {
@@ -71,6 +71,11 @@ public class UserManager {
             }
         }
     }
-    
-     
+
+    public void deletePlaylist(int userLoggedID, int playlistSelectedID) {
+        UserEntity user = getUserByID(userLoggedID);
+        Playlist playlist = em.find(Playlist.class, playlistSelectedID);
+        user.getMyPlaylists().remove(playlist);
+        em.merge(user);
+    }
 }

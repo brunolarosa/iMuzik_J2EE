@@ -162,7 +162,7 @@ public class UserMBean implements Serializable {
     }
     
       public void deletePlaylist(int playlistSelectedID) {
-        playlistManager.deletePlaylist(playlistSelectedID);
+        userManager.deletePlaylist(userLogged.getId(),playlistSelectedID);
         updateUser();
     }
 

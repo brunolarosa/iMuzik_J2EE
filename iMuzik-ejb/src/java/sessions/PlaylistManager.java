@@ -52,9 +52,7 @@ public class PlaylistManager {
           em.merge(playlist);
     }
     
-    public void deletePlaylist(int playlistSelectedID) {
-        em.remove(getPlaylist(playlistSelectedID)); 
-    }
+  
     
     public List<Playlist> getAllPlaylists() {
         Query q = em.createNamedQuery("Playlist.findAll");
