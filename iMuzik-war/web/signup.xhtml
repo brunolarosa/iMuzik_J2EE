@@ -8,23 +8,32 @@
 
 
     <ui:define name="content">
-        <f:view>
-            <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Email:" for="email" />
-                    <h:inputText id="email" value="#{userMBean.email}" title="Email" />
-                    <h:outputLabel value="FirstName:" for="firstName" />
-                    <h:inputText id="firstName" value="#{userMBean.firstName}" title="FirstName" />
-                    <h:outputLabel value="LastName:" for="lastName" />
-                    <h:inputText id="lastName" value="#{userMBean.lastName}" title="LastName" />
-                    <h:outputLabel value="Password:" for="password" />
-                    <h:inputText id="password" value="#{userMBean.password}" title="Password" />
-                </h:panelGrid>
-                <h:commandLink value="Enregistrer" action="#{userMBean.createUser()}"/>
-            </h:form>
-            
-        </f:view>
+        <div align="center">
+            <f:view>
+                <h:form>
+                    <br/>
+                    <h1><b><h:outputText value="Veuillez entrer vos informations :"/></b></h1>
+                    <br/>
+                    <br/>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Email :" for="email" />
+                        <h:inputText id="email" value="#{userMBean.email}" title="Email" />
+                        <h:outputLabel value="Prénom :" for="firstName" />
+                        <h:inputText id="firstName" value="#{userMBean.firstName}" title="FirstName" />
+                        <h:outputLabel value="Nom :" for="lastName" />
+                        <h:inputText id="lastName" value="#{userMBean.lastName}" title="LastName" />
+                        <h:outputLabel value="Mot de passe :" for="password" />
+                        <h:inputText id="password" value="#{userMBean.password}" title="Password" />
+                    </h:panelGrid>
+                    <br/>
+                    <br/>
+                    <h:commandButton value="Enregistrer"
+                     action="#{userMBean.createUser()}" />
+                  
+                </h:form>
+
+            </f:view>
+        </div>
     </ui:define>
 
 </ui:composition>
